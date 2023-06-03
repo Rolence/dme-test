@@ -24,6 +24,6 @@ jobs:
 
     - name: Build
       run: |
-        npm install
-        npm audit fix
+        npm install --legacy-peer-deps
+        npm audit fix --legacy-peer-deps
         grunt
