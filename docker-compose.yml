@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+
+  dme-test-fe:
+    image: dme-test-fe:latest
+    networks:
+      - custom_network
+    container_name: dme-test-fe
+    restart: always
+    ports:
+      - 4200:4200
+
+networks:
+  custom_network:
+    driver: bridge
