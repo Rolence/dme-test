@@ -1,27 +1,27 @@
-FROM node:14-alpine as builder
+# FROM node:16-alpine as builder
 
-WORKDIR /usr/src/app
+# WORKDIR /usr/src/app
 
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
-COPY package.json /usr/src/app/package.json
-RUN npm install -g npm@9.1.1
-RUN npm i @fullcalendar/angular --legacy-peer-deps
+# COPY package.json /usr/src/app/package.json
+# RUN npm install -g npm@9.1.1
+# RUN npm i @fullcalendar/angular --legacy-peer-deps
 
-RUN npm install -g @angular/cli@9.1.12
+# RUN npm install -g @angular/cli@9.1.12
 
 
-RUN npm install --legacy-peer-deps
+# RUN npm install --legacy-peer-deps
 
-#RUN npm audit fix
+# #RUN npm audit fix
 
-COPY . .
-RUN ng build --prod
+# COPY . .
+# RUN ng build --prod
 # RUN ng build --configuration production
 
 FROM nginx:1.19.3
 
-COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
+COPY ./dist /usr/share/nginx/html
 COPY ./docker.nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 4200
