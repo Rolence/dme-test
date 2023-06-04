@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { UtilityService } from './service/utility.service';
-import {WebWorkerService} from 'ngx-web-worker';
 
 @Component({
   selector: 'app-root',
@@ -13,18 +12,16 @@ export class AppComponent implements OnInit{
   public lecs: any[] = [];
   public selectedLecturer: string;
   lecObj: any;
-  // protected _worker: Worker;
 
 
-  constructor(//worker: Worker,
+  constructor(
     private utilityService: UtilityService) { 
-      // this._worker = worker;
     }
 
   ngOnInit(): void {
     this.items = this.utilityService.fetchClassRooms();
     this.lecs = this.utilityService.fetchLecturer();
-  }//#&d9Yj8@p}W}fDM
+  }
 
   studentEnter(id: number){
     this.items.forEach(it =>{
@@ -37,7 +34,6 @@ export class AppComponent implements OnInit{
         }
       }
     });
-    // console.log(JSON.stringify(this.items));
   }
 
   studentSitThread(id: number){
@@ -51,7 +47,6 @@ export class AppComponent implements OnInit{
         }
       }
     });
-    console.log(JSON.stringify(this.items));
   }
 
   studentSit(id: number){
@@ -66,47 +61,8 @@ export class AppComponent implements OnInit{
         }
       }
     });
-    this.sumInAnotherThread(this.items);
-    // console.log(JSON.stringify(this.items));
   }
-  sumInAnotherThread(input: any)
-	{
-    if (typeof Worker !== 'undefined') {
-      // Create a new
-      const worker = new Worker('./app.worker.ts');
-      worker.onmessage = ({ data }) => {
-        console.log(`page got message: ${data}`);
-      };
-      worker.postMessage('hello'+JSON.stringify(input));
-    } else {
-      console.log("Error occured");
-      // Web workers are not supported in this environment.
-      // You should add a fallback so that your program still executes correctly.
-    }
 
-		console.log(`The input is ${input}`)
-
-		let result = 0;
-
-		// for (let i = 1; i <= input; i++)
-		// {
-		// 	result += i;
-
-		// 	if (i % (input / 100) === 0)
-		// 	{
-		// 		postMessage(
-		// 			{
-		// 				type: 'progress',
-		// 				data: Math.round((i / input) * 100)
-		// 			}
-		// 		);
-		// 	}
-
-		// }
-
-
-		return result;
-	}
 
   studentLeave(id: number){
     this.items.forEach(it =>{
@@ -193,7 +149,6 @@ export class AppComponent implements OnInit{
         }
       }
     });
-    console.log("lecStart"+id);
   }
 
   lecLeave(id: number){
@@ -209,11 +164,9 @@ export class AppComponent implements OnInit{
   }
 
   selectLect(){
-    console.log("Called selectLec")
-    console.log("before Filter "+JSON.stringify(this.lecs));
     this.lecs = this.lecs.filter(item => item.busy === false);
-    console.log("after filter:  "+JSON.stringify(this.lecs));
   }
+
   selectOption(id: number, gpId: number) {
     let obj = '';
     this.lecs.forEach(lec => {
@@ -230,12 +183,5 @@ export class AppComponent implements OnInit{
           item.lecName = obj;
         }
     })
-    
-    //getted from event
-    console.log(id+" Group Id is  "+gpId);
-    console.log(JSON.stringify(this.lecs));
-    console.log(JSON.stringify(this.items));
-    //getted from binding
-    // console.log(this.selected)
   }
 }

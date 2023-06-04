@@ -19,9 +19,10 @@
 # RUN ng build --prod
 # RUN ng build --configuration production
 
-FROM nginx:1.19.3
-
-ADD ./dist /usr/share/nginx/html
+# FROM nginx:1.19.3
+FROM nginx:alpine
+RUN rm -f /etc/nginx/nginx.conf
+ADD ./dist/sim-college-classroom /usr/share/nginx/html
 COPY ./docker.nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 4200

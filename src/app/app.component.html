@@ -26,13 +26,13 @@
     <div>
       <h2>Student </h2>
       <button class="btn-enter" type="submit" (click)="studentEnter(group.id)" [disabled]="group.roomStatus || group.classStatus">Enter</button>
-      <button class="btn-sit" type="submit" (click)="studentSit(group.id)" [disabled]="group.roomStatus || group.classStatus">Sit Down</button>
-      <button class="btn-leave" type="submit" (click)="studentLeave(group.id)" [disabled]="group.roomStatus || group.classStatus">Leave</button>
+      <button class="btn-sit" type="submit" (click)="studentSit(group.id)" [disabled]=" group.ecount == group.scount">Sit Down</button>
+      <button class="btn-leave" type="submit" (click)="studentLeave(group.id)" [disabled]="group.roomStatus || group.classStatus || group.scount == 0">Leave</button>
     </div>
     <div>
       <h2>Visitor</h2>
       <button class="btn-enter" type="submit" (click)="visitorEnter(group.id)" [disabled]="group.roomStatus || group.classStatus">Enter</button>
-      <button class="btn-sit" type="submit" (click)="visitorSit(group.id)" [disabled]="group.roomStatus || group.classStatus" >Sit Down</button>
+      <button class="btn-sit" type="submit" (click)="visitorSit(group.id)" [disabled]=" group.ecount == group.scount" >Sit Down</button>
       <button class="btn-leave" type="submit" (click)="visitorLeave(group.id)" >Leave</button>
     </div>
     <div>
@@ -54,7 +54,7 @@
       <h3>Total visitors in class: {{group.vcount}}</h3>
       <h3>Total visitors seated in class: {{group.vscount}}</h3>
       <h3>Is Lecturer in class {{group.roomStatus}}</h3>
-      <h3>The Lecturer in class is {{group.lecName}}</h3>
+      <h3>The Lecturer in class is: {{group.lecName}}</h3>
       <h3>Has Lecture started {{group.classStatus}}</h3>
     </div>
   </div>
@@ -62,14 +62,14 @@
  
   <!-- Footer -->
   <footer>
-      Love Angular?&nbsp;
-      <a href="https://github.com/angular/angular" target="_blank" rel="noopener"> Give our repo a star.
+      Love DME SYSTEM Test?&nbsp;
+      <a href="https://github.com/Rolence/dme-test" target="_blank" rel="noopener"> Give our repo a star.
         <div class="github-star-badge">
             <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           Star
         </div>
       </a>
-      <a href="https://github.com/angular/angular" target="_blank" rel="noopener">
+      <a href="https://github.com/Rolence/dme-test" target="_blank" rel="noopener">
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
       </a>
   </footer>

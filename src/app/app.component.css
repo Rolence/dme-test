@@ -100,12 +100,12 @@
     height: 40px;
     color: white;
     background-color: green;
-    border: 4px;
+    border: 12px;
+    border-color: #1976d2;
     border-radius: 8px;
     justify-content: center;
     align-items: center;
-    /* filter: blur(2px); */
-    
+    margin-right: 20px;
   }
 
   .btn-sit{
@@ -117,7 +117,7 @@
     border-radius: 8px;
     justify-content: center;
     align-items: center;
-    /* filter: blur(2px); */
+    margin-right: 20px;
   }
 
   .btn-leave{
@@ -129,10 +129,10 @@
     border-radius: 8px;
     justify-content: center;
     align-items: center;
-    /* filter: blur(2px); */
+    margin-right: 20px;
   }
   button[disabled] {
-    filter: blur(2px);
+    filter: blur(1px);
   }
 
   .select-lec{
