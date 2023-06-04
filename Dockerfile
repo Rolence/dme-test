@@ -21,7 +21,7 @@
 
 FROM nginx:1.19.3
 
-COPY ./dist /usr/share/nginx/html
+ADD ./dist /usr/share/nginx/html
 COPY ./docker.nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 4200
