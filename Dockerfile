@@ -21,7 +21,7 @@ RUN ng build --configuration production
 
 FROM nginx:1.19.3
 
-COPY --from=builder /usr/src/app/dist/lnddo /usr/share/nginx/html
+COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
 COPY ./docker.nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 4200
