@@ -7,8 +7,9 @@ pipeline {
             steps {
                 sh 'node --version'
                 //sh "chown -R 128:137 "/.npm""
-                sh "npm install"
-                sh "npm build --prod"
+                sh "ng install"
+                sh "ng build"
+                sh "ng build --prod"
             }
         }
     }
