@@ -44,7 +44,7 @@ sudo containerd config default | sudo tee /etc/containerd/config.toml
 sudo systemctl restart containerd
 
 #To check status of containerd
-sudo systemctl status containerd
+# sudo systemctl status containerd
 #turn off swap partic
 sudo sed -ri '/\sswap\s/s/^#?/#/' /etc/fstab
 
